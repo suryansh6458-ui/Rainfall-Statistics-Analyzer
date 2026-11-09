@@ -1,0 +1,58 @@
+
+rainfall = []
+
+while True:
+    print("\n===== RAINFALL ANALYZER =====")
+    print("1. Add Daily Rainfall")
+    print("2. Display All Readings")
+    print("3. Calculate Total Rainfall")
+    print("4. Calculate Average Rainfall")
+    print("5. Highest and Lowest Rainfall")
+    print("6. Exit")
+
+    choice = input("Enter choice: ")
+
+    if choice == "1":
+        try:
+            value = float(input("Enter rainfall in mm: "))
+
+            if value < 0:
+                print("Rainfall cannot be negative.")
+            else:
+                rainfall.append(value)
+                print("Reading saved.")
+
+        except ValueError:
+            print("Enter a valid number.")
+
+    elif choice == "2":
+        if len(rainfall) == 0:
+            print("No readings available.")
+        else:
+            for i in range(len(rainfall)):
+                print("Day", i + 1, ":", rainfall[i], "mm")
+
+    elif choice == "3":
+        total = sum(rainfall)
+        print("Total rainfall:", total, "mm")
+
+    elif choice == "4":
+        if len(rainfall) == 0:
+            print("No readings available.")
+        else:
+            average = sum(rainfall) / len(rainfall)
+            print("Average rainfall:", round(average, 2), "mm")
+
+    elif choice == "5":
+        if len(rainfall) == 0:
+            print("No readings available.")
+        else:
+            print("Highest rainfall:", max(rainfall), "mm")
+            print("Lowest rainfall:", min(rainfall), "mm")
+
+    elif choice == "6":
+        print("Analyzer closed.")
+        break
+
+    else:
+        print("Invalid choice!")
